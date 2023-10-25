@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/procurar', function () {
+    return view('procurar');
+});
+
+Route::get('/criar', function () {
+    return view('criar');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
