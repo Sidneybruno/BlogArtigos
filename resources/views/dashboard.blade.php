@@ -1,5 +1,29 @@
 @extends('navbarMinhaConta')
     @section('conteudo')
+
+    <script>
+        $(document).ready(function () {
+            $(".remover").click(function (e) { 
+                e.preventDefault();
+                let id = (this).val(); 
+                alert(id);
+                $.ajax({
+                    type: "Delete",
+                    url: "/remover/"+ id,
+                    dataType: "JSON",
+                    success: function (response) {
+                        $.alert({
+                            columnClass: 'col-md-4 col-md-offset-4',
+                            type: 'green',
+                            theme: 'modern',
+                            title:  `Postagem deletada`,
+                            content: ` `,
+                        });
+                    }
+                });
+            });
+        });
+    </script>
         <div class="container m-4">
             <h3>Bem Vindo {{ Auth::user()->name }}</h3>
         </div>
@@ -51,27 +75,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td class="text-primary">Mark</td>
-                    <td>Otto</td>
-                    <td>08-08-2020</td>
-                    <td><a class="btn btn-sm btn-danger" href="/remover" type="button">Remover</a>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td class="text-primary">Jacob</td>
-                    <td >Thornton</td>
-                    <td>08-08-2020</td>
-                    <td><a class="btn btn-sm btn-danger" href="/remover" type="button">Remover</a>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td class="text-primary">Jacob</td>
-                    <td>Thornton</td>
-                    <td>08-08-2020</td>
-                    <td><a class="btn btn-sm btn-danger" href="/remover" type="button">Remover</a>
-                    </tr>
+                    @if($postagens)
+                        @foreach ($postagens as $postagem)
+                            <tr>
+                                <th scope="row">{{$postagem->id}}</th>
+                                <td class="text-primary">{{$postagem->titulo}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$postagem->created_at}}</td>
+                                <td><a class="btn btn-sm btn-danger remover" value="{{$postagem->id}}" type="button">Remover</a>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>

@@ -3,7 +3,7 @@
 <head>
 
 <body>
-    <header>
+    <head>
     <html lang="pt-br">
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,9 @@
 
             <!-- jquery -->
             <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+            <!-- tini mce -->
+            <script src="https://cdn.tiny.cloud/1/rerplnb11lllb11c7i4g7rgby62uew1d85nev2nmf1x6adn8/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+            
         <style>
         
         @media (max-width: 1366px) {
@@ -46,9 +49,9 @@
             
         }
     </style>
-    </header>
+    </head>
     
-    <main>
+    <header>
     <div style="zoom: 90%;">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
@@ -98,7 +101,7 @@
         </div>  
     </nav>
         @yield('conteudo') 
-    </main>
+    </header>
     
     <footer>
         
